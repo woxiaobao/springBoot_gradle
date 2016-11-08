@@ -1,5 +1,6 @@
 package com.lv.controller;
 
+import com.lv.utils.DesUtil;
 import com.lv.utils.MD5Util;
 import com.lv.utils.SHA1;
 import lv.com.utils.domain.EncryptResult;
@@ -17,6 +18,7 @@ public class UtilsController {
 
     protected static Logger logger= LoggerFactory.getLogger(UtilsController.class);
 
+
     @RequestMapping("/sha1/{str}")
     public EncryptResult sha1(@PathVariable(value = "str") String str) {
         //System.out.println("hello everyone!"+str);
@@ -30,5 +32,39 @@ public class UtilsController {
         String digest = MD5Util.MD5Encode(str);
         logger.info("md5:"+digest);
         return new EncryptResult(digest,"MD5","success");
+    }
+
+    /**
+     * DES加密
+     * @param value
+     * @return
+     */
+    @RequestMapping("desEncrypt")
+    public EncryptResult desEncrypt(String value){
+        logger.debug("desEncrypt=",value);
+        String str = null;
+        try {
+            DesUtil des = new DesUtil();
+            str = des.encrypt(value);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("desEncrypt happen error");
+        }
+        return new EncryptResult(str,"DES Encrypt","success");
+    }
+
+
+    @RequestMapping("desDecrypt")
+    public EncryptResult desDecrypt(String value){
+        logger.debug("desDecrypt=",value);
+        String str = null;
+        try {
+            DesUtil des = new DesUtil();
+            str = des.decrypt(value);
+        }catch (Exception e){
+            e.printStackTrace();
+            logger.error("desDecrypt happen error");
+        }
+        return new EncryptResult(str,"DES Decrypt","success");
     }
 }

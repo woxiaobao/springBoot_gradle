@@ -8,6 +8,7 @@
 ## 说明
 - 使用了redis
 - SHA1和MD5字符串进行加密
+- DES进行加密解密
 
 # 使用方法
 进入项目目录:
@@ -36,3 +37,11 @@ java -jar springBoot_gradle-0.1.0.jar
 	- SHA1加密测试 [http://localhost:8080/sha1/lvbaolin](http://localhost:8080/sha1/lvbaolin)
 
 	- MD5加密测试 [http://localhost:8080/md5/lvbaolin](http://localhost:8080/md5/lvbaolin)
+
+## DES进行加密和解密
+
+- 本地服务测试
+
+	- DES加密测试 [http://localhost:8080/desEncrypt?value=lvbaolin](http://localhost:8080/desEncrypt?value=lvbaolin)
+
+	- DES解密测试 [http://localhost:8080/desDecrypt?value=af8200309583959912274f73ca353d2f](http://localhost:8080/desDecrypt?value=af8200309583959912274f73ca353d2f)
