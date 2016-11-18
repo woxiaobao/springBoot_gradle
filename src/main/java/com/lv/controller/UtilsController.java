@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @RestController
 public class UtilsController {
 
-    protected static Logger logger= LoggerFactory.getLogger(UtilsController.class);
+    protected Logger logger= LoggerFactory.getLogger(this.getClass());
 
 
     @RequestMapping("/sha1/{str}")
@@ -41,7 +41,7 @@ public class UtilsController {
      */
     @RequestMapping("desEncrypt")
     public EncryptResult desEncrypt(String value){
-        logger.debug("desEncrypt=",value);
+        System.out.println("come here");
         String str = null;
         try {
             DesUtil des = new DesUtil();
@@ -50,13 +50,13 @@ public class UtilsController {
             e.printStackTrace();
             logger.error("desEncrypt happen error");
         }
+        logger.info("desEncrypt="+str);
         return new EncryptResult(str,"DES Encrypt","success");
     }
 
 
     @RequestMapping("desDecrypt")
     public EncryptResult desDecrypt(String value){
-        logger.debug("desDecrypt=",value);
         String str = null;
         try {
             DesUtil des = new DesUtil();
@@ -65,6 +65,7 @@ public class UtilsController {
             e.printStackTrace();
             logger.error("desDecrypt happen error");
         }
+        logger.info("desDecrypt="+str);
         return new EncryptResult(str,"DES Decrypt","success");
     }
 }
