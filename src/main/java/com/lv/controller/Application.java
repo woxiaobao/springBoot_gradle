@@ -9,7 +9,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
 /**
  * Created by LVBAOLIN on 2016/10/19.
  */
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages= "com")
 //@EnableAspectJAutoProxy
 //@EnableAutoConfiguration
 public class Application {

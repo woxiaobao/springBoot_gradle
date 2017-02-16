@@ -1,4 +1,4 @@
-﻿﻿# gradle   springBoot  项目例子
+﻿﻿# gradle   springBoot  mybatis redis项目例子
 
 ## 使用环境
 - java `jdk1.8.0_101`
@@ -7,6 +7,8 @@
 
 ## 说明
 - 使用了redis
+- 关系型数据库mysql
+- spring实现了AOP日志管理
 - SHA1和MD5字符串进行加密
 - DES进行加密解密
 
