@@ -6,10 +6,14 @@ import lv.com.domain.Greeting;
 import lv.com.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 
@@ -62,6 +66,27 @@ public class HelloController {
         return "ok";
     }
 
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
+    public String ceshi(HttpServletRequest request)
+    {
+        logger.info("hello ModelAndView!");
+        return "ceshi";
+    }
+
+    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    public ModelAndView hello() {
+
+        logger.info("hello() is executed - $name {}");
+
+        ModelAndView model = new ModelAndView();
+        model.setViewName("ceshi");
+
+        model.addObject("title", "baolin");
+        model.addObject("msg", "hahahah");
+
+        return model;
+
+    }
 
 
 }
