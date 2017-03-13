@@ -1,12 +1,12 @@
 package com.lv.service.impl;
 
 
+import com.lv.domain.Item;
 import com.lv.mapper.ItemMapper;
 import com.lv.service.ItemService;
-import lv.com.domain.Item;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
 @Service("itemService")
 public class ItemServiceImpl implements ItemService {
 
-//    @Resource
+//    @Autowired
 //    ItemMapper itemMapper;
 
 

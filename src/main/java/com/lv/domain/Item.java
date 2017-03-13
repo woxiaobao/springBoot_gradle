@@ -1,4 +1,4 @@
-package lv.com.domain;
+package com.lv.domain;
 
 import java.util.Date;
 

@@ -1,8 +1,8 @@
 package com.lv.mapper;
 
 
-import lv.com.domain.Item;
-import org.springframework.stereotype.Repository;
+import com.lv.domain.Item;
+import org.mybatis.spring.annotation.MapperScan;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * Created by lvbaolin on 2017/1/20.
  */
-//@Repository
+@MapperScan
 public interface ItemMapper {
 
     List<Item> selectItem(HashMap<?, ?> hashMap);

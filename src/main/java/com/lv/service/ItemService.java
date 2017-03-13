@@ -1,7 +1,6 @@
 package com.lv.service;
 
-import lv.com.domain.Item;
-import org.springframework.stereotype.Service;
+import com.lv.domain.Item;
 
 import java.util.HashMap;
 import java.util.List;

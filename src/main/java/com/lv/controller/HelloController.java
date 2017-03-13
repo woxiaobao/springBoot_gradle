@@ -1,21 +1,21 @@
 package com.lv.controller;
 
 
+import com.lv.domain.Item;
 import com.lv.service.ItemService;
 import lv.com.domain.Greeting;
-import lv.com.domain.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
@@ -27,14 +27,18 @@ public class HelloController {
     protected static Logger logger= LoggerFactory.getLogger(HelloController.class);
 
 
-    @Resource
+    @Autowired
     ItemService itemService;
 
+
+    /**
+     * spring boot默认使用json的解析框架是jackson
+     * @return
+     */
     @RequestMapping("/hello")
     public Greeting list() {
 
-
-        logger.info("hello everyone!");
+        logger.info("hello everyone!  -i am lvbaolin");
         return new Greeting(1, "frist");
     }
 
@@ -42,6 +46,14 @@ public class HelloController {
     public String index() {
         logger.info("hello everyone!");
         return "Greetings from Spring Boot!";
+    }
+
+    @RequestMapping(value = "/test", produces = "application/json;charset=UTF-8")
+    public Map<String, Object> test() {
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("success", true);
+        map.put("data", "your data");
+        return map;
     }
 
 
@@ -59,6 +71,7 @@ public class HelloController {
         logger.info("hello everyone!");
 //        userMapper.insert(name, age);
         List<Item> items = itemService.findItems(hashMap);
+        System.out.println(items.size());
         for (Item item: items) {
             logger.info(item.getName());
         }
@@ -70,10 +83,10 @@ public class HelloController {
     public String ceshi(HttpServletRequest request)
     {
         logger.info("hello ModelAndView!");
-        return "ceshi";
+        return "this is data list ----";
     }
 
-    @RequestMapping(value = "/hello", method = RequestMethod.GET)
+    @RequestMapping(value = "/hello2", method = RequestMethod.GET)
     public ModelAndView hello() {
 
         logger.info("hello() is executed - $name {}");
