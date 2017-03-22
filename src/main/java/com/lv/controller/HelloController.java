@@ -2,6 +2,7 @@ package com.lv.controller;
 
 
 import com.lv.domain.Item;
+import com.lv.rabbitmq.Sender;
 import com.lv.service.ItemService;
 import lv.com.domain.Greeting;
 import org.slf4j.Logger;
@@ -29,6 +30,20 @@ public class HelloController {
 
     @Autowired
     ItemService itemService;
+
+    @Autowired
+    private Sender sender;
+
+
+    @RequestMapping("/rabbit")
+    public String rabbit() {
+
+        sender.send();
+        logger.info("sender.send();");
+        return "ok";
+    }
+
+
 
 
     /**
