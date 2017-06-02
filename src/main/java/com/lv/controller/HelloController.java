@@ -94,12 +94,12 @@ public class HelloController {
         return "ok";
     }
 
-    @RequestMapping(value = "/list", method = RequestMethod.GET)
-    public String ceshi(HttpServletRequest request)
-    {
-        logger.info("hello ModelAndView!");
-        return "this is data list ----";
-    }
+    // @RequestMapping(value = "/list", method = RequestMethod.GET)
+    // public String ceshi(HttpServletRequest request)
+    // {
+    //     logger.info("hello ModelAndView!");
+    //     return "this is data list ----";
+    // }
 
     @RequestMapping(value = "/hello2", method = RequestMethod.GET)
     public ModelAndView hello() {
